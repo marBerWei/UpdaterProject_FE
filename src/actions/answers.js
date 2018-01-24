@@ -12,7 +12,7 @@ export function fetchAnswers() {
 
   return function(dispatch) { 
     //dispatch(fetchingQuestions())
-	  fetch("http://localhost:3001/answers", {
+	  fetch("http://updaterfaqbe.herokuapp.com/answers", {
 	      method: 'get',
 	      headers: {
 	        "Content-Type":"application/json",
@@ -32,7 +32,7 @@ export function fetchAnswers() {
 export function createAnswer( answerParams) {
   const body = JSON.stringify(answerParams)
   return function(dispatch){
-    fetch("http://localhost:3001/answers", {
+    fetch("http://updaterfaqbe.herokuapp.com/answers", {
       method: 'post',
       body: body,
       headers: {

@@ -9,7 +9,7 @@ export function fetchQuestions() {
 
   return function(dispatch) { 
     //dispatch(fetchingQuestions())
-	  fetch("http://localhost:3001/questions", {
+	  fetch("http://updaterfaqbe.herokuapp.com/questions", {
 	      method: 'get',
 	      headers: {
 	        "Content-Type":"application/json",
@@ -47,7 +47,7 @@ export function savingQuestion( questionParams) {
   const body = JSON.stringify(questionParams)
   return function(dispatch){
     //console.log("inside the dispatch")
-    fetch("http://localhost:3001/questions", {
+    fetch("http://updaterfaqbe.herokuapp.com/questions", {
       method: 'post',
       body: body,
       headers: {
