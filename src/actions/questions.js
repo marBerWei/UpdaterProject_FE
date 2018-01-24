@@ -9,7 +9,7 @@ export function fetchQuestions() {
 
   return function(dispatch) { 
     //dispatch(fetchingQuestions())
-	  fetch("http://updaterfaqbe.herokuapp.com/questions", {
+	  fetch("https://updaterfaqbe.herokuapp.com/questions", {
 	      method: 'get',
 	      headers: {
 	        "Content-Type":"application/json",
