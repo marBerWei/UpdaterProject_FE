@@ -3,13 +3,13 @@ import QuestionItem from './questionItem'
 
 const QuestionList = (props) => {
 
-	const questions = props.questions.map(q => {
+	const questions = props.currentSearch.map(q => {
 		return <QuestionItem question={q} key={q.id}/>
 	})
 	
 	return(
-		<div className = 'questionsList'>
-		<h1>Questions</h1>
+	<div className = 'questionsList'>
+		<div className="questionsTitle">Questions</div>
 		<ul>
 	      {questions}
       	</ul>

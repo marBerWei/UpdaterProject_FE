@@ -37,10 +37,8 @@ class AnswerForm extends React.Component {
     return (
       <div>
       <Form onSubmit = {this.handleSubmit}>
-        <Form.Group widths='equal'>
-          <Form.Field onChange={this.handleNameChange} control={Input} label='name' placeholder='Name' />
-        </Form.Group>
         <Form.Field control={TextArea} onChange={this.handleTextChange}label='Answer' placeholder="Got an answer?..." />
+        <Form.Field onChange={this.handleNameChange} control={Input} label='name' placeholder='Name' />
         <Form.Field control={Button}>Submit</Form.Field>
       </Form>
       </div>

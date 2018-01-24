@@ -8,9 +8,9 @@ const AnswerList = (props) => {
 	})
 	
 	return(
-	<div className = 'AnswersList'>
+	<div className = 'answerList'>
 	  <ul>
-	     {answers}
+	    {answers}
       </ul>
     </div>
 	)

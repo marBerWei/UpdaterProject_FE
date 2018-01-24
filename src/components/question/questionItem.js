@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { changeToDate } from '../../services/questions'
 import { setCurrentQuestion } from '../../actions/questions'
 import { setFilteredAnswers } from '../../actions/answers'
+import { setCurrentSearch } from '../../actions/questions'
 import {connect} from 'react-redux'
 
 class QuestionItem extends React.Component {
@@ -11,6 +12,7 @@ class QuestionItem extends React.Component {
 		let filteredAnswers = this.props.answers.filter(a => a.question_id === this.props.currentQuestion.id)
 		console.log('answers array:',this.props.answers, 'filtered:', filteredAnswers)
 		this.props.setFilteredAnswers(filteredAnswers)
+		this.props.setCurrentSearch(this.props.questions)
 	}
 
 	handleMouseover = (e) => {
@@ -28,11 +30,11 @@ class QuestionItem extends React.Component {
 			<div onClick={this.handleClick} className = "questionItem">
 				<Link  to={"/" + this.props.question.id} onMouseOver={this.handleMouseover} >
 					<div className ="questionTextArea">
-						<div className="questionTex">
+						<div className="questionText">
 							{this.props.question.title}
 						</div>
 						<div className="askedBy">
-							-- {this.props.question.name}
+							- {this.props.question.name}
 						</div>
 						<div className="createdAt">
 							{date}
@@ -47,6 +49,7 @@ class QuestionItem extends React.Component {
 
 function mapStateToProps(state){
   return {
+  	questions: state.questions,
     answers: state.answers,
     currentQuestion:state.currentQuestion
   }
@@ -59,6 +62,9 @@ function mapDispatchToProps(dispatch){
     },
     setFilteredAnswers: (id) => {
       dispatch(setFilteredAnswers(id))
+    },
+    setCurrentSearch: (obj) => {
+      dispatch(setCurrentSearch(obj))
     }
   }
 }

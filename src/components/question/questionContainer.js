@@ -10,9 +10,8 @@ class QuestionContainer extends React.Component {
 
     
 		return(
-			<div className="questionsContainer">
-
-				<Route exact path="/" render={(props) => <QuestionList questions={this.props.questions} {...props} />}/>
+		<div className="questionsContainer">
+            <div className="questionGridItem">
   			<Route path="/:id" render={(routeProps) => {
     			const id = parseInt(routeProps.location.pathname.slice(11))
     			// console.log(this.props.questions)
@@ -21,6 +20,7 @@ class QuestionContainer extends React.Component {
     			 })
     		return <QuestionDetail question = {question[0]} {...routeProps}/>
     		}} />
+        </div>
 			</div>
 		)
 	}

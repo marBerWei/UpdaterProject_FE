@@ -8,10 +8,10 @@ const Search = (props) => {
  	}
   return (
   	<div className="searchContainer">
-  		<h1>Updater FAQ</h1>
+  		
 	  	<div className="searchBox">
 		  	
-		    <div className="input">
+		    <div className="searchInput">
 		    	<h1>Search For a Question</h1><br/>
 		      <Input
 		      	size="massive"
@@ -20,7 +20,7 @@ const Search = (props) => {
 		        onChange={handleSearch}
 		      />
 		    </div>
-		    <div>
+		    <div className="searchInput">
 			    <h1>Ask a Question</h1>
 			    <QuestionForm />
 		    </div>

@@ -7,14 +7,14 @@ class AnswerItem extends React.Component {
 		//console.log(this.props)
 		return(
 		<div className = "answerItem">
-			<div className ="questionTextArea">
-				<div className="questionText">
+			<div className ="answerTextArea">
+				<div className="answerText">
 					{this.props.answer.answer_text}
 				</div>
-				<div className="askedBy">
+				<div className="answerName">
 					-- {this.props.answer.name}
 				</div>
-				<div className="createdAt">
+				<div className="answerLikes">
 					{this.props.answer.like}
 				</div>
 			</div>

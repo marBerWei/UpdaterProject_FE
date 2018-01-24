@@ -8,11 +8,6 @@ import AnswerForm from '../answer/answerForm'
 
 class QuestionDetail extends React.Component {
 
-	componentDidMount() {
-    	this.props.fetchQuestions()
-    	this.props.fetchAnswers()
-  }
-
   handleFormUpdate(){
   	console.log(this.props)
   }
@@ -22,11 +17,13 @@ class QuestionDetail extends React.Component {
 	console.log('details page',this.props)
 
 	return(
-			<div >
-				<h1>{this.props.currentQuestion.title} --- {this.props.currentQuestion.name} </h1>
-				<AnswerContainer filteredAnswers={this.props.filteredAnswers}/>
+
+			<div className="questionDetails">
+				<div className="questionTitle">{this.props.currentQuestion.title}?</div>
+        <AnswerContainer filteredAnswers={this.props.filteredAnswers}/>
 				<AnswerForm handleFormUpdate={this.handleFormUpdate}/>
 			</div>
+
 		)
 	}
 }

@@ -9,7 +9,7 @@ class AnswerContainer extends React.Component {
 	render(){
 		//console.log('props:',this.props)
 		return(
-			<div>
+			<div >
 				<AnswerList answers={this.props.filteredAnswers}/>
 			</div>
 		)

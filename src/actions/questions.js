@@ -31,6 +31,13 @@ export function setCurrentQuestion(payload) {
   }
 }
 
+export function setCurrentSearch(payload) {
+  return {
+    type: 'SET_CURRENT_SEARCH',
+    payload
+  }
+}
+
 // post to database
 
 
@@ -54,29 +61,3 @@ export function savingQuestion( questionParams) {
     })
   }
 }
-
-
-// export function savingQuestion( questionParams, dispatch ) {
-//   const body = JSON.stringify(questionParams)
-// 	return fetch("http://localhost:3001/questions", {
-//       method: 'post',
-//       body: body,
-//       headers: {
-//         "Content-Type":"application/json",
-//         "Accept":"application/json"
-//       }
-//     })
-//       .then((res) => res.json())
-//       .then((json) => {
-//       console.log(json)  
-//       dispatch(fetchedQuestions(json))
-//         //dispatch(saveQuestion(json))
-//     })  
-// }
-
-// export function saveQuestion(payload){
-//   return { 
-//     type: "SAVE_QUESTION",
-//     payload
-//   }
-// }
