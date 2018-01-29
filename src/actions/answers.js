@@ -1,30 +1,21 @@
-// updates the state
-export function fetchedAnswers(payload) {
-  return {
-    type: 'FETCHED_ANSWERS',
-    payload
-  }
-}
-
-
 //fetches all the answers from the back end
-export function fetchAnswers() {
+// export function fetchAnswers() {
 
-  return function(dispatch) { 
-    //dispatch(fetchingQuestions())
-	  fetch("https://updaterfaqbe.herokuapp.com/answers", {
-	      method: 'get',
-	      headers: {
-	        "Content-Type":"application/json",
-	        "Accept":"application/json"
-	      }
-	    })
-	    .then(resp => resp.json())
-	    .then(answersJSON => {
-	    	dispatch(fetchedAnswers(answersJSON))
-		})
-	}
-}
+//   return function(dispatch) { 
+//     //dispatch(fetchingQuestions())
+// 	  fetch("http://localhost:3001/answers", {
+// 	      method: 'get',
+// 	      headers: {
+// 	        "Content-Type":"application/json",
+// 	        "Accept":"application/json"
+// 	      }
+// 	    })
+// 	    .then(resp => resp.json())
+// 	    .then(answersJSON => {
+// 	    	dispatch(fetchedAnswers(answersJSON))
+// 		})
+// 	}
+// }
 
 //creates a new answer
 
@@ -32,7 +23,7 @@ export function fetchAnswers() {
 export function createAnswer( answerParams) {
   const body = JSON.stringify(answerParams)
   return function(dispatch){
-    fetch("https://updaterfaqbe.herokuapp.com/answers", {
+    fetch("http://localhost:3001/answers", {
       method: 'post',
       body: body,
       headers: {
@@ -42,21 +33,24 @@ export function createAnswer( answerParams) {
     })
     .then((res) => res.json())
     .then((json) => {
-      dispatch(fetchedAnswers(json))
+      console.log(json)
+      dispatch(fetchedOneQuestion(json))
+      // update the store with the current question and answer
     })
   }
 }
 
-export function setFilteredAnswers(payload) {
+export function fetchedOneQuestion(payload) {
   return {
-    type: 'SET_FILTERED_ANSWERS',
+    type: 'FETCHED_ONE_QUESTION',
     payload
   }
 }
 
-export function updateFilteredAnswers(payload){
+
+export function updateAnswersForCurrentQuestion(payload){
   return { 
-    type: "UPDATE_FILTERED_ANSWERS",
+    type: "UPDATE_ANSWERS_FOR_CURRENT_QUESTION",
     payload
   }
 }

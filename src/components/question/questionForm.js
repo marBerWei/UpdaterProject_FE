@@ -35,7 +35,8 @@ class QuestionForm extends React.Component {
     
     return (
       <div className="questionFormContainer">
-      <Form onSubmit = {this.handleSubmit}>
+      
+      <Form size={'massive'} key={'massive'} onSubmit = {this.handleSubmit}>
         <Form.Field control={TextArea} onChange={this.handleTitleChange}placeholder="What's on your mind?..." />
         <Form.Field onChange={this.handleNameChange} control={Input} placeholder='Name' />
         <Form.Field control={Button}>Submit</Form.Field>

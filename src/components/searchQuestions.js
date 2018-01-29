@@ -1,32 +1,51 @@
 import React from 'react'
-import QuestionForm from './question/questionForm'
+import {fetchedOneQuestion} from '../actions/questions'
 import { Input} from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 const Search = (props) => {
 	const handleSearch = (event) => {
  		props.onSearch(event)
  	}
+
+  const clearCurrentSearch = () => {
+  		props.fetchedOneQuestion('')
+  }
+
   return (
+    <div className="searchPadding">
   	<div className="searchContainer">
   		
 	  	<div className="searchBox">
 		  	
-		    <div className="searchInput">
-		    	<h1>Search For a Question</h1><br/>
 		      <Input
 		      	size="massive"
 		        type="text"
-		        placeholder="Search..."
+            icon='search' 
+		        placeholder="Search previously asked questions..."
 		        onChange={handleSearch}
+		        onClick={clearCurrentSearch}
 		      />
-		    </div>
-		    <div className="searchInput">
-			    <h1>Ask a Question</h1>
-			    <QuestionForm />
-		    </div>
+		   
+		    
 	    </div>
+    </div>
     </div>
   )
 }
 
-export default Search
+function mapDispatchToProps(dispatch){
+  return {
+    // fetchAnswers: (state) => {
+    //   dispatch(fetchAnswers(state))
+    // },
+    // fetchQuestions:(string) => {
+    //   dispatch(fetchQuestions(string))
+    // },
+    fetchedOneQuestion: (arg) => {
+      dispatch(fetchedOneQuestion(arg))
+    },
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Search)

@@ -1,17 +1,11 @@
-function rootReducer(state = { questions: [], answers:[], filteredAnswers:[], currentQuestion:0, currentSearch:''}, action) {
+function rootReducer(state = { questions: [], currentQuestion:'', currentSearch:''}, action) {
   switch (action.type) {
     case 'FETCHED_QUESTIONS':
       return Object.assign({}, state, { questions: action.payload } )
-    case 'SET_CURRENT_QUESTION':
+    case 'FETCHED_ONE_QUESTION':
       return Object.assign({}, state, { currentQuestion: action.payload } )
     case "SAVE_QUESTION":
       return Object.assign({}, state, {questions: [...state.questions, action.payload]} )
-    case 'FETCHED_ANSWERS':
-      return Object.assign({}, state, { answers: action.payload } )
-    case 'SET_FILTERED_ANSWERS':
-      return Object.assign({}, state, { filteredAnswers: action.payload } )
-    case 'UPDATE_FILTERED_ANSWERS':
-      return Object.assign({}, state, { filteredAnswers:[...state.filteredAnswers, action.payload]} )
     case 'SET_CURRENT_SEARCH':
       return Object.assign({}, state, { currentSearch: action.payload } )
     default:

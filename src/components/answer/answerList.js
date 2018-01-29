@@ -1,5 +1,6 @@
 import React from 'react'
 import AnswerItem from './answerItem'
+import Scroll from 'react-awesome-scroll';
 
 const AnswerList = (props) => {
 
@@ -9,10 +10,14 @@ const AnswerList = (props) => {
 	
 	return(
 	<div className = 'answerList'>
-	  <ul>
-	    {answers}
-      </ul>
+		<div style={{ height: 500}} >
+			<Scroll>
+			  <ul>
+			   {answers}
+		    </ul>
+	    </Scroll>
     </div>
+  </div>
 	)
 }
 

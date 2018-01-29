@@ -1,15 +1,15 @@
 import React from 'react'
 import QuestionItem from './questionItem'
+import {ScrollArea} from 'react-scrollbar';
 
 const QuestionList = (props) => {
-
-	const questions = props.currentSearch.map(q => {
+	console.log('question list props=', props)
+	const questions = props.questions.map(q => {
 		return <QuestionItem question={q} key={q.id}/>
 	})
 	
 	return(
 	<div className = 'questionsList'>
-		<div className="questionsTitle">Questions</div>
 		<ul>
 	      {questions}
       	</ul>

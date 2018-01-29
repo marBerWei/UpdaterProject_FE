@@ -1,27 +1,17 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
 import QuestionList from './questionList'
-import QuestionDetail from './questionDetail'
-
+import Scroll from 'react-awesome-scroll';
 class QuestionContainer extends React.Component {
 
 
 	render(){
-
-    
+        console.log(this.props)
 		return(
-		<div className="questionsContainer">
-            <div className="questionGridItem">
-  			<Route path="/:id" render={(routeProps) => {
-    			const id = parseInt(routeProps.location.pathname.slice(11))
-    			// console.log(this.props.questions)
-    			const question = this.props.questions.filter((question) => {
-      	 		return question.id === id
-    			 })
-    		return <QuestionDetail question = {question[0]} {...routeProps}/>
-    		}} />
-        </div>
-			</div>
+		<div style={{ height: 1000}}>
+		<Scroll>
+           <QuestionList questions={this.props.questions}/>
+        </Scroll>
+		</div>
 		)
 	}
 }

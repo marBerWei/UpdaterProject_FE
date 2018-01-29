@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import {Route} from 'react-router-dom'
 import {connect} from 'react-redux'
-import { fetchAnswers } from './actions/answers'
+
+//import { fetchAnswers } from './actions/answers'
 import { fetchQuestions } from './actions/questions'
 import { setCurrentSearch } from './actions/questions'
 import Nav from './components/nav'
 import { withRouter} from 'react-router'
-import SearchQuestions from './components/searchQuestions'
+import Search from './components/searchQuestions'
 import QuestionForm from './components/question/questionForm'
 import QuestionContainer from './components/question/questionContainer'
+import AnswerOrAskContainer from './components/answer/answerOrAskContainer'
 import QuestionList from './components/question/questionList'
+
 import './App.css';
 
 class App extends Component {
@@ -19,7 +22,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchQuestions()
-    this.props.fetchAnswers()
+    // this.props.fetchAnswers()
   }
 
   onSearch = (event) => {
@@ -49,12 +52,18 @@ class App extends Component {
     return (
 
       <div className="App">
-        <div className="appContainer">
-        <Nav />
-        <div className="someThing"><QuestionList questions={currentSearch} currentSearch={currentSearch} /></div>
-        <div className="updaterTitle">Updater FAQ</div>
-          <Route exact path="/" render={(props) => <SearchQuestions onSearch={this.onSearch} {...props} /> }/>
-          <Route path="/" render={(props) => <QuestionContainer answers={this.props.answers} questions={currentSearch} currentSearch={this.props.currentSearch} {...props} /> }/>
+        <div className = "header">
+          <img className="updater_pic" src={require('./updater_logo.png')}/>
+            <div>Q&A</div>
+        </div>
+        <Search onSearch={this.onSearch}/>
+        <div className ="homePage">
+          <div className="answerOrAskContainer">
+             <AnswerOrAskContainer/>
+          </div>
+          <div className="questionsContainer">
+            <QuestionContainer questions={currentSearch}/>
+          </div>
         </div>
       </div>
     );
@@ -72,9 +81,6 @@ function mapStateToProps(state){
 }
 function mapDispatchToProps(dispatch){
   return {
-    fetchAnswers: (state) => {
-      dispatch(fetchAnswers(state))
-    },
     fetchQuestions:(string) => {
       dispatch(fetchQuestions(string))
     },
@@ -86,3 +92,16 @@ function mapDispatchToProps(dispatch){
 
 
 export default withRouter(connect(mapStateToProps ,mapDispatchToProps)(App));
+
+
+
+// <div className="updaterTitle">Updater FAQ</div>
+
+
+// <div className="appContainer">
+//         <Nav />
+//         <div className="someThing"><QuestionList questions={currentSearch} currentSearch={currentSearch} /></div>
+//         <div className="updaterTitle">Updater FAQ</div>
+//           <Route exact path="/" render={(props) => <SearchQuestions onSearch={this.onSearch} {...props} /> }/>
+//           <Route path="/" render={(props) => <QuestionContainer answers={this.props.answers} questions={currentSearch} currentSearch={this.props.currentSearch} {...props} /> }/>
+//         </div>
